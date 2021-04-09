@@ -3,6 +3,7 @@ package br.edu.infnet.appataugustooliveira.model.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appataugustooliveira.model.negocio.Usuario;
@@ -30,6 +31,11 @@ public class UsuarioService {
 	
 	public List<Usuario> obterLista(){
 		return (List<Usuario>)usuarioRepository.findAll();
+	}
+	
+	public List<Usuario> obterLista(Usuario usuario) {
+		
+		return (List<Usuario>)usuarioRepository.obterLista(Sort.by(Sort.Direction.ASC, "nome"));
 	}
 	
 }

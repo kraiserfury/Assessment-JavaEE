@@ -40,13 +40,13 @@ public class InvestidorController {
 	
 	@GetMapping(value = "/investidor/{id}/excluir") 
 		
-		public String excluir(Model model, @PathVariable Integer id) {
+		public String excluir(Model model, @PathVariable Integer id,  @SessionAttribute("user") Usuario usuario) {
 		
 		try {
 			investidorService.excluir(id);
 		} catch (Exception e) {
 			model.addAttribute("mensagem", "Impossível excluir o investidor: " + e.getMessage());
-			return showDetalhe(model, null);
+			return showDetalhe(model, usuario);
 			
 		}
 		

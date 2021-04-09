@@ -24,6 +24,9 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name = "idUsuario")
 	private List<Venda> venda;
+	@OneToMany
+	@JoinColumn(name = "idUsuario")
+	private List<Investidor> investidor;
 	
 	public String getGit() {
 		return git;
@@ -61,6 +64,12 @@ public class Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public List<Investidor> getInvestidor() {
+		return investidor;
+	}
+	public void setInvestidor(List<Investidor> investidor) {
+		this.investidor = investidor;
 	}
 	
 }

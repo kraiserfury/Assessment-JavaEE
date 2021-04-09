@@ -54,9 +54,17 @@ public class UsuarioController {
 	}
 	
 	@GetMapping(value = "/usuario/{id}/excluir")
-	public String excluir(@PathVariable Integer id) {
+	public String excluir(Model model, @PathVariable Integer id) {
 		
-		usuarioService.excluir(id);
+		try {
+			usuarioService.excluir(id);
+
+			
+		} catch (Exception e) {
+			
+			model.addAttribute("mensagem", "Impossível excluir o usuario: " + e.getMessage());
+			return cadastrar(model);
+		}
 		
 		return "redirect:/usuario";
 	}
